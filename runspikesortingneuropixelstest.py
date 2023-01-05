@@ -82,15 +82,18 @@ def spikesorting_postprocessing(params):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("params_file", help="path to the json file containing the parameters")
-    args = parser.parse_args()
-    with open(args.params_file) as json_file:
+    # parser = argparse.ArgumentParser()
+    params_file = Path(__file__).parent / 'my_silly_params.json'
+    # parser.add_argument("params_file", help="path to the json file containing the parameters")
+    # args.params_file = params_file
+    # args = parser.parse_args()
+
+    with open(params_file) as json_file:
         minified = jsmin(json_file.read())  # Parses out comments.
         params = json.loads(minified)
 
     logpath = Path(params['logpath'])
-    now = datetime.datetime.now().strftime('%d-%m-%Y_%H:%M:%S')
+    now = datetime.datetime.now().strftime('%d-%m-%Y_%H_%M_%S')
 
     fh = logging.FileHandler(logpath / f'neuropixels_sorting_logs_{now}.log')
     fh.setLevel(logging.DEBUG)

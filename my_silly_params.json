@@ -1,13 +1,13 @@
 {
-    "logpath": "/home/skgtjml/Scratch/logs",
+    "logpath": "D:/Npspikesorting/logs",
 
-    "datadir": "/home/skgtjml/Scratch/tmpData/NeuropixelData2",
+    "datadir": "E:/Electrophysiological_Data/F2003_Orecchiette/",
 
-    "sorter_list": ["kilosort3"],
+    "sorter_list": ["mountainsort4"],
 
-    "working_directory": "/home/skgtjml/Scratch/working_directory/np_working_dir",
+    "working_directory": "D:/Npspikesorting/",
 
-    "output_folder": "/home/skgtjml/Scratch/si_neuropixel_spikesorting",
+    "output_folder": "D:/Npspikesorting/results",
 
     "sorter_paths":
     {
