@@ -13,7 +13,8 @@
     {
         "kilosort2_path": "/home/skgtjml/code/spikesorting_tools/Kilosort-2.0",
         "kilosort3_path": "/home/skgtjml/code/spikesorting_tools/Kilosort",
-        "waveclus_path": "/home/skgtjml/code/spikesorting_tools/wave_clus"
+        "waveclus_path": "/home/skgtjml/code/spikesorting_tools/wave_clus",
+        "mountainsort4_path": "D:/Npspikesorting"
     },
 
     "remove_dup_spikes": true,

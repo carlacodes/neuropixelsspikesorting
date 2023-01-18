@@ -1,6 +1,6 @@
 # Set logging before the rest as neo (and neo-based imports) needs to be imported after logging has been set
 import logging
-
+##for some reason isoplit5 only works on python 3.9>=
 logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
     level=logging.INFO,
