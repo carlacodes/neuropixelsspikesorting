@@ -1,7 +1,7 @@
 {
     "logpath": "D:/Npspikesorting/logs",
 
-    "datadir": "E:/Electrophysiological_Data/F2003_Orecchiette/",
+    "datadir": "E:/Electrophysiological_Data/F2103_Fettucini/",
 
     "sorter_list": ["mountainsort4"],
 
