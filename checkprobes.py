@@ -6,6 +6,7 @@ from probeinterface.plotting import plot_probe
 import glob
 from glob import glob
 import os
+from spikesorting_scripts.helpers import get_channelmap_names
 ##Author - Jules
 
 def main():
@@ -31,5 +32,27 @@ def main():
 
 
 
+def getchanmapnames():
+    datadir = Path('E:/Electrophysiological_Data')
+    ferret='F2103_Fettucini'
+    subfolder ='/'
+    fulldir = datadir / ferret
+    print([f.name for f in fulldir.glob('*g0')])
+    list_subfolders_with_paths = [f.path for f in os.scandir(fulldir) if f.is_dir()]
+    session_list = list(fulldir.glob('*_g0'))
+    bigdict = {}
+    for session in tqdm(session_list):
+
+        chanmapdict = get_channelmap_names(session)
+        print(chanmapdict)
+        #
+        # print(chanmapdict)
+        #append chan map dict to big dict
+        bigdict[session] =chanmapdict
+    return chanmapdict
+
+    #get the channel map name
+
 if __name__ == '__main__':
-    main()
+    chanmapdict = getchanmapnames()
+    #main()
