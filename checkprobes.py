@@ -52,16 +52,16 @@ def getchanmapnames_andmove(datadir, ferret):
         upperdirec = keys.replace('_imec0', '')
         if 'S3' in bigdict[keys]:
             print('found s3')
-            dest = Path('E:/Electrophysiological_Data/F2103_Fettucini/S3')
+            dest = Path(str(fulldir)+'/S3')
         elif 'S4' in bigdict[keys]:
             print('found S4')
-            dest = Path('E:/Electrophysiological_Data/F2103_Fettucini/S4')
+            dest = Path(str(fulldir)+'/S4')
         elif 'S2' in bigdict[keys]:
             print('found S2')
-            dest = Path('E:/Electrophysiological_Data/F2103_Fettucini/S2')
+            dest = Path(str(fulldir)+'/S2')
         elif 'S1' in bigdict[keys]:
             print('found S1')
-            dest = Path('E:/Electrophysiological_Data/F2103_Fettucini/S1')
+            dest = Path(str(fulldir)+'/S1')
         try:
             shutil.move(str(fulldir / upperdirec), str(dest))
         except:
