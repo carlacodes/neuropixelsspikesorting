@@ -6,9 +6,9 @@ from probeinterface.plotting import plot_probe
 import glob
 from glob import glob
 import os
+import shutil
 from spikesorting_scripts.helpers import get_channelmap_names
-##Author - Jules
-
+''' Jules is the author of the helper functions'''
 def main():
     savedir = Path('D:/Data/probefiguresneuropixels/AM')
     datadir = Path('E:/Electrophysiological_Data')
@@ -48,7 +48,29 @@ def getchanmapnames():
         #
         # print(chanmapdict)
         #append chan map dict to big dict
-        bigdict[session] =chanmapdict
+        bigdict.update(chanmapdict)
+    for keys in bigdict:
+        print(keys)
+        print(bigdict[keys])
+        #find out if filename contains keyword
+        if 'S3' in bigdict[keys]:
+            print('found s3')
+            dest = Path('E:/Electrophysiological_Data/F2103_Fettucini/S3')
+            shutil.move(fulldir / keys, dest)
+        elif 'S4' in bigdict[keys]:
+            print('found S4')
+            dest = Path('E:/Electrophysiological_Data/F2103_Fettucini/S4')
+            shutil.move(fulldir / keys, dest)
+        elif 'S2' in bigdict[keys]:
+            print('found S2')
+            dest = Path('E:/Electrophysiological_Data/F2103_Fettucini/S2')
+            shutil.move(fulldir / keys, dest)
+        elif 'S1' in bigdict[keys]:
+            print('found S1')
+            dest = Path('E:/Electrophysiological_Data/F2103_Fettucini/S1')
+            shutil.move(fulldir / keys, dest)
+
+
     return chanmapdict
 
     #get the channel map name
