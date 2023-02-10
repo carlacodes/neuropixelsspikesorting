@@ -73,6 +73,6 @@ def getchanmapnames_andmove(datadir, ferret):
 
 if __name__ == '__main__':
     datadir = Path('E:/Electrophysiological_Data')
-    ferret = 'F2103_Fettucini'
+    ferret = 'F2003_Orecchiette'
     chanmapdict = getchanmapnames_andmove(datadir, ferret)
     #main()
