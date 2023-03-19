@@ -28,7 +28,7 @@ import spikeinterface.qualitymetrics as sqm
 import spikeinterface.exporters as sexp
 
 import spikesorting_scripts
-from spikesorting_scripts.postprocessing import postprocessing_si
+# from spikesorting_scripts.postprocessing import postprocessing_si
 from spikesorting_scripts.npyx_metadata_fct import get_npix_sync
 
 
@@ -142,7 +142,7 @@ def spikesorting_postprocessing(params):
 
 def main():
     # parser = argparse.ArgumentParser()
-    params_file = Path(__file__).parent / 'my_silly_params_pykilosorts2.json'
+    params_file = Path(__file__).parent / 'my_silly_params_pykilosort2.json'
     # parser.add_argument("params_file", help="path to the json file containing the parameters")
     # args.params_file = params_file
     # args = parser.parse_args()

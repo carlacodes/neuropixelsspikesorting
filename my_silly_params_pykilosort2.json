@@ -8,6 +8,9 @@
 
     "output_folder": "E:\\resultskilosort\\18032023_ore_s2\\pykilosort",
 
+    "working_directory": "E:\\resultskilosort\\18032023_ore_s2\\pykilosort",
+
+
     "sorter_paths":
     {
         "kilosort2_path": "/home/zceccgr/Scratch/zceccgr/Kilosort-2.0",
