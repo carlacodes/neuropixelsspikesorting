@@ -6,9 +6,9 @@
 
     "sorter_list": ["pykilosort"],
 
-    "output_folder": "E:\\resultskilosort\\18032023_ore_s2\\pykilosort",
+    "output_folder": "E:/18032023_ore_s2/",
 
-    "working_directory": "E:\\resultskilosort\\18032023_ore_s2\\pykilosort",
+    "working_directory": "E:/18032023_ore_s2/",
 
 
     "sorter_paths":

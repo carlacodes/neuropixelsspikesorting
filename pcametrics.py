@@ -15,7 +15,7 @@ import argparse
 import json
 import jsmin
 from jsmin import jsmin
-import numpy as np
+
 
 os.environ['NUMEXPR_MAX_THREADS'] = '36'
 
@@ -102,7 +102,7 @@ def spikesorting_postprocessing(params):
         logger.info(f'Postprocessing {rec_name} {sorter_name}')
         # if params['remove_dup_spikes']:
         #     logger.info(f'removing duplicate spikes')
-        #     sorting = scu.remove_duplicated_spikes(sorting, censored_period_ms=params['remove_dup_spikes_params']['censored_period_ms'])
+        # sorting = scu.remove_duplicated_spikes(sorting, censored_period_ms=params['remove_dup_spikes_params']['censored_period_ms'])
 
         logger.info('waveform extraction')
         outDir = Path(params['output_folder']) / rec_name / sorter_name
@@ -115,11 +115,11 @@ def spikesorting_postprocessing(params):
         from spikeinterface.postprocessing import compute_principal_components
         # pca = compute_principal_components(we, n_components=5, mode='by_channel_local')
         print('computing quality metrics')
-        metrics = sqm.compute_quality_metrics(we, metric_names=[
-
-            "l_ratio",
-
-        ])
+        metrics = sqm.compute_quality_metrics(we, metric_names= ['isolation_distance', 'l_ratio',
+                             'nearest_neighbor'])
+        print(metrics)
+        import numpy as np
+        np.save('E:/18032023_ore_s2/recording_0/pykilosort/metrics.npy', metrics)
         # assert 'isolation_distance' in metrics.columns
         # logger.info(f'Exporting to phy')
         # sexp.export_to_phy(we, outDir / 'phy_folder2',
@@ -153,15 +153,15 @@ def main():
 
     logpath = Path(params['logpath'])
     now = datetime.datetime.now().strftime('%d-%m-%Y_%H_%M_%S')
+    #
+    # fh = logging.FileHandler(logpath / f'neuropixels_sorting_logs_{now}.log')
+    # fh.setLevel(logging.DEBUG)
+    # logger.addHandler(fh)
 
-    fh = logging.FileHandler(logpath / f'neuropixels_sorting_logs_{now}.log')
-    fh.setLevel(logging.DEBUG)
-    logger.addHandler(fh)
-
-    logger.info('Starting')
+    # logger.info('Starting')
 
     sorter_list = params['sorter_list']  # ['klusta'] #'kilosort2']
-    logger.info(f'sorter list: {sorter_list}')
+    # logger.info(f'sorter list: {sorter_list}')
 
     if 'kilosort2' in sorter_list:
         ss.Kilosort2Sorter.set_kilosort2_path(params['sorter_paths']['kilosort2_path'])
@@ -174,7 +174,7 @@ def main():
     output_folder = Path(params['output_folder'])
     working_directory = Path(params['working_directory'])
 
-    logger.info('Start loading recordings')
+    # logger.info('Start loading recordings')
 
     # Load recordings
     sessions = [sess.name for sess in datadir.glob('*_g0')]
@@ -229,7 +229,9 @@ def main():
 
     # Not sure if it works with concatenated recordings
     # And might take a while to run extract waveforms
+    print('run spikeinterface')
     spikesorting_postprocessing(params)
+    return
 
 
 if __name__ == '__main__':
